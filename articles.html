@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/normalize.css"/>
+    <link rel="stylesheet" href="css/styles.css" media="screen" />
+    <link rel="stylesheet" href="css/printStyle.css" media="print" />
+    <title>F1</title>
+</head>
+<body>
+<header>
+    <h2 class = "mainh2">FORMULA 1</h2>
+</header>
+
+<img src="nove.png"
+     srcset="nove.png 138w,
+                     stare.jpg 255w"
+     sizes="(min-width: 600px) 30vw, 50vw"
+     title= "logo F1"
+     alt= "logo"
+     class="logo"
+/>
+<nav>
+    <h3 class = "aside">Menu</h3>
+    <div class="nav">
+        <a class="tooltip" href="article.html">Zoznam tÃ­mov a jazdcov
+            <span class="tooltiptext">Zoznam tÃ­mov...</span>
+        </a>
+        <a class="tooltip" href="article2.html">Å tatistiky tÃ­mov
+            <span class="tooltiptext">Å tatistiky...</span>
+        </a>
+        <a class="tooltip" href="article3.html">Zmena Racing Point
+            <span class="tooltiptext">Zmena Racing Point na Aston Martin...</span>
+        </a>
+        <a class="tooltip" href="article4.html">Ferrari reaguje na koronavÃ­rus
+            <span class="tooltiptext">Ferrari reaguje na koronavÃ­rus, do Maranella nepustia kaÅ¾dÃ©ho...</span>
+        </a>
+        <a class="tooltip" href="article5.html">Pneumatiky
+            <span class="tooltiptext">Pneumatiky sÃº dnes dÃ´leÅ¾itejÅ¡ie...</span>
+        </a>
+    </div>
+</nav>
+<br>
+
+    <main>
+        <article>
+            <h3 class="aside">ZÃ¡kladnÃ© informÃ¡cie</h3>
+            <p>Formula 1 (skrÃ¡tene F1) oficiÃ¡lne znÃ¡ma ako FIA Formula One World Championship, zaloÅ¾enÃ¡ v roku 1946, je oznaÄovanÃ¡ za krÃ¡Ä¾ovskÃº disciplÃ­nu motoristickÃ©ho Å¡portu. Od roku 1950 sa konajÃº MajstrovstvÃ¡ sveta jazdcov a od roku 1958 aj PohÃ¡r konÅ¡truktÃ©rov. ÃÄastnÃ­ci Å¡ampionÃ¡tu pritom musia byÅ¥ drÅ¾iteÄ¾mi platnej Superlicencie. TakzvanÃ© monoposty sÃº jednomiestne na tento ÃºÄel Å¡peciÃ¡lne vyrobenÃ© pretekÃ¡rske autÃ¡, ktorÃ½ch technickÃ© parametre sa menia vzhÄ¾adom na kaÅ¾doroÄne upravovanÃ© pravidlÃ¡. Ich maximÃ¡lne rÃ½chlosti prevyÅ¡ujÃº 350 km/h a v niektorÃ½ch zÃ¡krutÃ¡ch musia pretekÃ¡ri zvlÃ¡daÅ¥ preÅ¥aÅ¾enie aÅ¾ 5 g. V priebehu histÃ³rie preÅ¡li monoposty formuly 1 veÄ¾kou evolÃºciou. NÃ¡vÅ¡tevnÃ­ci tu mÃ´Å¾u nÃ¡jsÅ¥ zoznam tÃ­mov a jazdcov ktorÃ½ do tÃ½chto tÃ­mov patria, Å¡tatistiky tohtoroÄnej sezÃ³ny a novinky tÃ½kajÃºce sa kolotoÄa F1.</p>
+        </article>
+        <article id="komentare_navstevnikov">
+            <h3 class="aside">KomentÃ¡re nÃ¡vÅ¡tevnÃ­kov</h3>
+            <div id="opinionsContainer"></div>
+            <script id="TemplateShow" type="text/template">
+                <section>
+                    <h3>{{name}} <i class="datum_komentar">{{createdDate}}</i> <i class="team_komentar">{{favourite_team}}</i></h3>
+                    <p>{{commentary}}</p>
+                    <img src="{{img_url}}" title= "obrÃ¡zok komentÃ¡ra" alt= "obrÃ¡zok nebol vloÅ¾enÃ½" class="komentarove">
+                    <p>{{is_good_source}}</p>
+                    <i>{{email}}</i>
+                </section>
+            </script>
+            <button id="zmazanie_komentarov">ZmaÅ¾ starÃ© komentÃ¡re</button>
+        </article>
+        <article class="formularovy">
+            <h3 class="aside">Pridaj komentÃ¡r</h3>
+            <form id="formular">
+                <label for="name">Meno:</label>
+                <input type="text" name="login" id="name" size="20" maxlength="50" placeholder="Tu napÃ­Å¡te svoje meno..." required/>
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" autocomplete="on" size="30" maxlength="80" placeholder="Tu napÃ­Å¡te svoj email..." required/>
+                <br>
+                <label for="image">ObrÃ¡zok:</label>
+                <input type="url" name="obrazok" id="image" size="50" maxlength="200" placeholder="Sem vloÅ¾e URL adresu obrÃ¡zka..."/>
+                <br>
+                <h5>Ako veÄ¾mi sa VÃ¡m pÃ¡Äi tÃ¡to strÃ¡nka?</h5>
+                <input type="radio" id="r1" name="radio_opinion" value="velmi" />
+                <label for="r1">VeÄ¾mi sa mi pÃ¡Äi</label>
+                <br>
+                <input type="radio" id="r2" name="radio_opinion" value="stredne" />
+                <label for="r2">Celkom dobrÃ¡</label>
+                <br>
+                <input type="radio" id="r3" name="radio_opinion" value="malo" />
+                <label for="r3">NepÃ¡Äi sa mi</label>
+                <br><br>
+                <label for="textarea">VÃ¡Å¡ komentÃ¡r:</label>
+                <br>
+                <textarea rows="5" cols="50" name="komentar" id="textarea" placeholder="Sem vloÅ¾te komentÃ¡r..." required></textarea>
+                <br>
+                <input type="checkbox" id="check" name="check"/>
+                <label for="check">TÃ¡to strÃ¡nka je dobrÃ½m zdrojom informÃ¡ciÃ­.</label>
+                <br><br>
+                <label for="datalist_input">KtorÃ½ tÃ­m je VÃ¡Å¡ najobÄ¾ÃºbenejÅ¡Ã­?</label>
+                <input type="text" id="datalist_input" name="datalist_input" list="teams">
+                <datalist id="teams">
+                    <option value="Ferrari">
+                    <option value="Mercedes">
+                    <option value="Alfa Romeo">
+                    <option value="Red Bull">
+                    <option value="Mclaren">
+                    <option value="Toro Rosso">
+                    <option value="Haas">
+                    <option value="Renault">
+                    <option value="Racing Point">
+                    <option value="Williams">
+                </datalist>
+                <br>
+                <button id="submit">OdoslaÅ¥</button>
+            </form>
+        </article>
+    </main>
+
+<aside>
+    <article>
+        <h3 class = "aside">Autor:</h3>
+        <p>Moje meno je TomÃ¡Å¡ BuÄek a som Å¡tudentom TUKE na odbore Informatika(2. roÄnÃ­k).</p>
+    </article>
+    <address>
+        <a class="animacia" href="mailto:tomas.bucek@student.tuke.sk?subject=Reakcia%20na%20VÃ¡Å¡%20blog%20s%20nÃ¡zvom%20F1">Kontakt</a>
+    </address>
+    <svg height="150" width="150">
+        <circle cx="80" cy="80" r="50"
+                stroke="black" stroke-width="1" fill="black" />
+        <circle cx="80" cy="80" r="30"
+                stroke="white" stroke-width="1" fill="grey" />
+    </svg>
+</aside>
+    <footer>
+        <p>VytvorenÃ© 26.2.2020</p>
+        <p>Autor: TomÃ¡Å¡ BuÄek, email: tomas.bucek@student.tuke.sk</p>
+    </footer>
+
+<script src="js/komentare.js"></script>
+</body>
+</html>
