@@ -2,10 +2,10 @@
   "name": "f1blog",
   "version": "1.0.0",
   "description": "stránka o f1",
-  "main": "index.html",
+  "main": "articles.html",
   "scripts": {
-    "start": "parcel index.html --open",
-    "build": "parcel build index.html"
+    "start": "parcel articles.html --open",
+    "build": "parcel build articles.html"
   },
   "dependencies": {
     "mustache": "4.0.1"

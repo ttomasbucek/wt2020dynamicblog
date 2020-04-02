@@ -99,7 +99,7 @@ function processOpnFrmData(event) {
 */
 
   //3. Verify the data
-  if (name == "" || email == "" || commentary == "") {
+  if (name === "" || email === "" || commentary === "") {
     window.alert("Please, your name, opinion and email address");
     return;
   }

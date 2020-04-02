@@ -1,16 +1,219 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" media="screen" />
+    <link rel="stylesheet" href="css/printStyle.css" media="print" />
+    <title>F1</title>
+  </head>
+  <body>
+    <header>
+      <h2 class="mainh2">FORMULA 1</h2>
+    </header>
 
-<head>
-	<title>Parcel Sandbox</title>
-	<meta charset="UTF-8" />
-</head>
+    <img
+      src="nove.png"
+      srcset="nove.png 138w, stare.jpg 255w"
+      sizes="(min-width: 600px) 30vw, 50vw"
+      title="logo F1"
+      alt="logo"
+      class="logo"
+    />
+    <nav>
+      <h3 class="aside">Menu</h3>
+      <div class="nav">
+        <a class="tooltip" href="article.html"
+          >Zoznam tímov a jazdcov
+          <span class="tooltiptext">Zoznam tímov...</span>
+        </a>
+        <a class="tooltip" href="article2.html"
+          >Štatistiky tímov
+          <span class="tooltiptext">Štatistiky...</span>
+        </a>
+        <a class="tooltip" href="article3.html"
+          >Zmena Racing Point
+          <span class="tooltiptext">Zmena Racing Point na Aston Martin...</span>
+        </a>
+        <a class="tooltip" href="article4.html"
+          >Ferrari reaguje na koronavírus
+          <span class="tooltiptext"
+            >Ferrari reaguje na koronavírus, do Maranella nepustia
+            každého...</span
+          >
+        </a>
+        <a class="tooltip" href="article5.html"
+          >Pneumatiky
+          <span class="tooltiptext">Pneumatiky sú dnes dôležitejšie...</span>
+        </a>
+      </div>
+    </nav>
+    <br />
 
-<body>
-	<div id="app"></div>
+    <main>
+      <article>
+        <h3 class="aside">Základné informácie</h3>
+        <p>
+          Formula 1 (skrátene F1) oficiálne známa ako FIA Formula One World
+          Championship, založená v roku 1946, je označovaná za kráľovskú
+          disciplínu motoristického športu. Od roku 1950 sa konajú Majstrovstvá
+          sveta jazdcov a od roku 1958 aj Pohár konštruktérov. Účastníci
+          šampionátu pritom musia byť držiteľmi platnej Superlicencie. Takzvané
+          monoposty sú jednomiestne na tento účel špeciálne vyrobené pretekárske
+          autá, ktorých technické parametre sa menia vzhľadom na každoročne
+          upravované pravidlá. Ich maximálne rýchlosti prevyšujú 350 km/h a v
+          niektorých zákrutách musia pretekári zvládať preťaženie až 5 g. V
+          priebehu histórie prešli monoposty formuly 1 veľkou evolúciou.
+          Návštevníci tu môžu nájsť zoznam tímov a jazdcov ktorý do týchto tímov
+          patria, štatistiky tohtoročnej sezóny a novinky týkajúce sa kolotoča
+          F1.
+        </p>
+      </article>
+      <article id="komentare_navstevnikov">
+        <h3 class="aside">Komentáre návštevníkov</h3>
+        <div id="opinionsContainer"></div>
+        <script id="TemplateShow" type="text/template">
+          <section>
+              <h3>{{name}} <i class="datum_komentar">{{createdDate}}</i> <i class="team_komentar">{{favourite_team}}</i></h3>
+              <p>{{commentary}}</p>
 
-	<script src="src/index.js">
-	</script>
-</body>
+              {{#img_url}}
+              <img src="{{img_url}}" title= "obrázok komentára" alt= "obrázok nebol vložený" class="komentarove">
+              {{/img_url}}
+              {{^img_url}}
+              (nebol vložený obrázok)
+              {{/img_url}}
+              <p>{{is_good_source}}</p>
+              <i>{{email}}</i>
+          </section>
+        </script>
+        <button id="zmazanie_komentarov">Zmaž staré komentáre</button>
+      </article>
+      <article class="formularovy">
+        <h3 class="aside">Pridaj komentár</h3>
+        <form id="formular">
+          <label for="name">Meno:</label>
+          <input
+            type="text"
+            name="login"
+            id="name"
+            size="20"
+            maxlength="50"
+            placeholder="Tu napíšte svoje meno..."
+            required
+          />
+          <br />
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            autocomplete="on"
+            size="30"
+            maxlength="80"
+            placeholder="Tu napíšte svoj email..."
+            required
+          />
+          <br />
+          <label for="image">Obrázok:</label>
+          <input
+            type="url"
+            name="obrazok"
+            id="image"
+            size="50"
+            maxlength="200"
+            placeholder="Sem vlože URL adresu obrázka..."
+          />
+          <br />
+          <h5>Ako veľmi sa Vám páči táto stránka?</h5>
+          <input type="radio" id="r1" name="radio_opinion" value="velmi" />
+          <label for="r1">Veľmi sa mi páči</label>
+          <br />
+          <input type="radio" id="r2" name="radio_opinion" value="stredne" />
+          <label for="r2">Celkom dobrá</label>
+          <br />
+          <input type="radio" id="r3" name="radio_opinion" value="malo" />
+          <label for="r3">Nepáči sa mi</label>
+          <br /><br />
+          <label for="textarea">Váš komentár:</label>
+          <br />
+          <textarea
+            rows="5"
+            cols="50"
+            name="komentar"
+            id="textarea"
+            placeholder="Sem vložte komentár..."
+            required
+          ></textarea>
+          <br />
+          <input type="checkbox" id="check" name="check" />
+          <label for="check">Táto stránka je dobrým zdrojom informácií.</label>
+          <br /><br />
+          <label for="datalist_input">Ktorý tím je Váš najobľúbenejší?</label>
+          <input
+            type="text"
+            id="datalist_input"
+            name="datalist_input"
+            list="teams"
+          />
+          <datalist id="teams">
+            <option value="Ferrari"> </option>
+            <option value="Mercedes"> </option>
+            <option value="Alfa Romeo"> </option>
+            <option value="Red Bull"> </option>
+            <option value="Mclaren"> </option>
+            <option value="Toro Rosso"> </option>
+            <option value="Haas"> </option>
+            <option value="Renault"> </option>
+            <option value="Racing Point"> </option>
+            <option value="Williams"> </option>
+          </datalist>
 
+          <br />
+          <button id="submit">Odoslať</button>
+        </form>
+      </article>
+    </main>
+
+    <aside>
+      <article>
+        <h3 class="aside">Autor:</h3>
+        <p>
+          Moje meno je Tomáš Buček a som študentom TUKE na odbore Informatika(2.
+          ročník).
+        </p>
+      </article>
+      <address>
+        <a
+          class="animacia"
+          href="mailto:tomas.bucek@student.tuke.sk?subject=Reakcia%20na%20Váš%20blog%20s%20názvom%20F1"
+          >Kontakt</a
+        >
+      </address>
+      <svg height="150" width="150">
+        <circle
+          cx="80"
+          cy="80"
+          r="50"
+          stroke="black"
+          stroke-width="1"
+          fill="black"
+        />
+        <circle
+          cx="80"
+          cy="80"
+          r="30"
+          stroke="white"
+          stroke-width="1"
+          fill="grey"
+        />
+      </svg>
+    </aside>
+    <footer>
+      <p>Vytvorené 26.2.2020</p>
+      <p>Autor: Tomáš Buček, email: tomas.bucek@student.tuke.sk</p>
+    </footer>
+
+    <script src="js/komentare.js"></script>
+  </body>
 </html>
